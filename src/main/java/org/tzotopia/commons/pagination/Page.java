@@ -2,9 +2,13 @@ package org.tzotopia.commons.pagination;
 
 import java.util.Collection;
 
-public interface Page<T> extends Iterable<T> 
+public interface Page<T, V> extends Iterable<T>
 {
-	Collection<T> getContent();
-	
-	boolean hasContent();
+	public Collection<T> getContent();
+
+	public boolean getHasContent();
+
+    public V getNext();
+
+    public V getPrevious();
 }

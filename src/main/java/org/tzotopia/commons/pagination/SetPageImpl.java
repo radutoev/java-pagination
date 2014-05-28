@@ -5,19 +5,18 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-/**
- * Created by radutoev on 16/12/13.
- */
-public class SetPageImpl<T> implements Page<T>
+public class SetPageImpl<T, V> extends AbstractPage
 {
     private Set<T> content = new HashSet<>();
 
-    public SetPageImpl(Set<T> content)
+    public SetPageImpl(Set<T> content, V nextPage, V previousPage)
     {
         if (null == content) {
             throw new IllegalArgumentException("Content must not be null!");
         }
         this.content.addAll(content);
+        this.nextPage = nextPage;
+        this.previousPage = previousPage;
     }
 
     @Override
@@ -26,7 +25,7 @@ public class SetPageImpl<T> implements Page<T>
     }
 
     @Override
-    public boolean hasContent() {
+    public boolean getHasContent() {
         return !content.isEmpty();
     }
 
